@@ -26,11 +26,11 @@ import javafx.animation.AnimationTimer;
 public class Render {
 
 
-    public static Scene render_board(Board board, int tile_size) {
+    public static void render_board(GraphicsContext gc,Board board, int tile_size) {
 
 
         //INIT ALL FIX LATER
-        Pacman pacman = new Pacman(2,new ImageView("pac.png") , null, null);
+        
         Ghost redGhost = new Ghost(0, new ImageView("redghost.png"), null);
         Ghost blueGhost = new Ghost(0, new ImageView("blueghost.png"), null);
         Ghost orangeGhost = new Ghost(0, new ImageView("orangeghost.png"), null);
@@ -39,7 +39,7 @@ public class Render {
         BigFood bigFood = new BigFood(new Image("bigfood.jpg"), null);
         NormalFood normalFood = new NormalFood(new Image("normalfood.png"), null);
     
-        ImageView pacmanImage = pacman.getImage();
+        
         ImageView redGhostImage = redGhost.getImage();
         ImageView blueGhostImage = blueGhost.getImage();
         ImageView orangeGhostImage = orangeGhost.getImage();
@@ -48,11 +48,13 @@ public class Render {
         Image bigFoodImage = bigFood.getImage();
         Image normalFoodImage = normalFood.getImage();
     
-    
-        Canvas canvas = new Canvas(620, 650);
-        GraphicsContext graphics = canvas.getGraphicsContext2D();
         //
 
+
+
+        
+        
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 
         for (int row = 0; row < board.map.length; row++) {
                 for (int column = 0; column < board.map[0].length; column++) {
@@ -64,58 +66,41 @@ public class Render {
                     switch (tile) {
         
                         case 'n':
-                            graphics.fillRect(x, y, tile_size, tile_size);
+                            gc.fillRect(x, y, tile_size, tile_size);
                             break;
         
                         case 'r':
-                            redGhostImage.setX(column*tile_size);
-                            redGhostImage.setY(row*tile_size);
-                            redGhostImage.setFitHeight(tile_size-5);
-                            redGhostImage.setFitWidth(tile_size-5);
+                            gc.fillRect(x, y, tile_size, tile_size);
                             break;
                         
                         case 'w':
-                            graphics.drawImage(wallImage, x, y, tile_size, tile_size); 
+                            gc.drawImage(wallImage, x, y, tile_size, tile_size); 
                             break;
                         
                         case 'g':
-                            blueGhostImage.setX(column*tile_size);
-                            blueGhostImage.setY(row*tile_size);
-                            blueGhostImage.setFitHeight(tile_size-5);
-                            blueGhostImage.setFitWidth(tile_size-5);                            
+                            gc.fillRect(x, y, tile_size, tile_size);                             
                             break;
         
                         case 'p':
-                            pinkGhostImage.setX(column*tile_size);
-                            pinkGhostImage.setY(row*tile_size);
-                            pinkGhostImage.setFitHeight(tile_size-5);
-                            pinkGhostImage.setFitWidth(tile_size-5);
+                            gc.fillRect(x, y, tile_size, tile_size);
                             break;
         
                         case 'o':
-                            orangeGhostImage.setX(column*tile_size);
-                            orangeGhostImage.setY(row*tile_size);
-                            orangeGhostImage.setFitHeight(tile_size-5);
-                            orangeGhostImage.setFitWidth(tile_size-5);
-
-
+                            gc.fillRect(x, y, tile_size, tile_size);
                             break;
         
                         case 'h':
-                            pacmanImage.setX(column*tile_size);
-                            pacmanImage.setY(row*tile_size);
-                            pacmanImage.setFitHeight(tile_size);
-                            pacmanImage.setFitWidth(tile_size);
 
+                            gc.fillRect(x, y, tile_size, tile_size);
 
                             break;
         
                         case 'b':
-                            graphics.drawImage(bigFoodImage, x, y, tile_size, tile_size);
+                            gc.drawImage(bigFoodImage, x, y, tile_size, tile_size);
                             break;
         
                         case 's':
-                            graphics.drawImage(normalFoodImage, x, y, tile_size, tile_size);
+                            gc.drawImage(normalFoodImage, x, y, tile_size, tile_size);
                             break;
         
                     }
@@ -125,15 +110,35 @@ public class Render {
         }
 
 
-            Pane pane = new Pane();
-            pane.getChildren().addAll(canvas,pacmanImage,blueGhostImage,orangeGhostImage,pinkGhostImage,redGhostImage);
+    }
 
-            Scene scene = new Scene(pane, 620,650 ,Color.BLACK);
+                    
+     
 
-            return scene;
+
+
+
+
+    
+    public static void render_moving_object(MovingObject mobject, int tile_size){
+
+
+        
+        mobject.image.setX(mobject.position[1]);
+        mobject.image.setY(mobject.position[0]);
+        mobject.image.setFitHeight(tile_size);
+        mobject.image.setFitWidth(tile_size);
+
 
 
     }
+
+
+    
+    
+
+
+
 
 
     

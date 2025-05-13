@@ -13,7 +13,5 @@ public class BigFood extends NonMovingObject {
     public Image getImage() {
         return this.image;
     }
-
-
     
 }

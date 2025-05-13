@@ -10,26 +10,75 @@ import javafx.scene.paint.Color;
 
 public class Pacman extends MovingObject {
 
-    public String direction;
-    
-
-
-
-
 
     //Image image = new Image("pac.png");
 
-    public Pacman(int speed, ImageView image, int[] position, String direction) {
+    public Pacman(int speed, ImageView image, int[] position, String direction, String nextDirection, int moveProgress) {
         this.speed=speed;
         this.image=image;
         this.position=position;
         this.direction=direction;
-
+        this.nextDirection = nextDirection;
+        this.moveProgress = moveProgress;
     }
 
-    
-    
     public void move() {
+
+
+      
+
+
+            if(this.moveProgress < 40){
+
+                if (direction=="UP") {
+                    image.setRotate(270);
+                    this.position[0] = position[0] - speed;
+                }
+            
+
+                if (direction=="DOWN") {
+                    image.setRotate(270);
+                    this.position[0] = position[0] + speed;
+                }
+
+                if (direction=="LEFT") {
+                    image.setRotate(270);
+                    this.position[1] = position[1] - speed;
+                }
+
+                if (direction=="RIGHT") {
+                    image.setRotate(270);
+                    this.position[1] = position[1] + speed;
+                }
+
+                this.moveProgress = moveProgress + speed;
+
+            } else {
+                moveProgress = 0; 
+                if (nextDirection != null) {
+                    this.direction = nextDirection;
+                    nextDirection = null;
+                }
+            }
+            
+         
+
+
+        } 
+
+     
+
+
+
+    
+
+
+    public void setNextDirection(String direction){
+        this.nextDirection = direction;
+    }
+
+    public void setDirection(String direction){
+        this.direction = direction;
     }
 
     public ImageView getImage() {
@@ -37,21 +86,10 @@ public class Pacman extends MovingObject {
     }
     
 
-    public void move(KeyEvent event) {
-        if (event.getCode() == KeyCode.UP) {
-            direction = "UP";
-        }
-        else if (event.getCode() == KeyCode.DOWN) {
-            direction = "DOWN";
-        }
-        else if (event.getCode() == KeyCode.LEFT) {
-            direction = "LEFT";
-        }
-        else if (event.getCode() == KeyCode.RIGHT) {
-            direction = "RIGHT";
-        }
-        else {
-            direction = "NO DIRECTION";
-        }
-    }
+
+
+
+
+
+    
 }
