@@ -14,12 +14,12 @@ public class Update {
 
         //ghost1 movement
         
-        GhostAI.chase(ghost1, pacman, board);
+        GhostAI.chase(ghost1, pacman, board, tile_size);
 
 
         
 
-
+        //Checks collisions
         if (Collision.sfood_collision(pacman, board, tile_size, gamestate)){
 
             board.set_tile(pacman.position[0] /tile_size, pacman.position[1] / tile_size, 'n');
@@ -39,8 +39,6 @@ public class Update {
 
             if (gamestate.getGameState() == 1){
                 gamestate.setScore(gamestate.getScore() + 50);
-
-                
 
             }
             else{ 
