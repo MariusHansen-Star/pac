@@ -31,19 +31,19 @@ public class Render {
 
         //INIT ALL FIX LATER
         
-        Ghost redGhost = new Ghost(0, new ImageView("redghost.png"), null);
-        Ghost blueGhost = new Ghost(0, new ImageView("blueghost.png"), null);
-        Ghost orangeGhost = new Ghost(0, new ImageView("orangeghost.png"), null);
-        Ghost pinkGhost = new Ghost(0, new ImageView("pinkghost.png"), null);
+        //Ghost redGhost = new Ghost(0, new ImageView("redghost.png"), null);
+        //Ghost blueGhost = new Ghost(0, new ImageView("blueghost.png"), null);
+        //Ghost orangeGhost = new Ghost(0, new ImageView("orangeghost.png"), null);
+        //Ghost pinkGhost = new Ghost(0, new ImageView("pinkghost.png"), null);
         Wall wall = new Wall(new Image("wall.png"), null);
         BigFood bigFood = new BigFood(new Image("bigfood.jpg"), null);
         NormalFood normalFood = new NormalFood(new Image("normalfood.png"), null);
     
         
-        ImageView redGhostImage = redGhost.getImage();
-        ImageView blueGhostImage = blueGhost.getImage();
-        ImageView orangeGhostImage = orangeGhost.getImage();
-        ImageView pinkGhostImage = pinkGhost.getImage();
+       // ImageView redGhostImage = redGhost.getImage();
+        //ImageView blueGhostImage = blueGhost.getImage();
+        //ImageView orangeGhostImage = orangeGhost.getImage();
+        //ImageView pinkGhostImage = pinkGhost.getImage();
         Image wallImage = wall.getImage();
         Image bigFoodImage = bigFood.getImage();
         Image normalFoodImage = normalFood.getImage();

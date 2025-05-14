@@ -35,7 +35,12 @@ public class PlayGame extends Application {
         Pacman pacman =  new Pacman(2,new ImageView("pac.png"),new int[]{tile_size * 6, tile_size * 7}, "RIGHT"
         , null, 0);
         Board board = new Board();
-        GameState gamestate = new GameState(3, 1, 0);
+        GameState gamestate = new GameState(3, 0, 0);
+
+        Ghost ghost = new Ghost (2,new ImageView("redghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        , null, 0);
+
+
 
 
 
@@ -50,7 +55,7 @@ public class PlayGame extends Application {
 
         Pane root = new Pane();
         Canvas canvas = new Canvas(tile_size*16, tile_size*16);
-        root.getChildren().addAll(canvas, pacman.image, scoreLabel);
+        root.getChildren().addAll(canvas, pacman.image, ghost.image, scoreLabel);
         root.setStyle("-fx-background-color: black;");
 
 
@@ -71,25 +76,14 @@ public class PlayGame extends Application {
             @Override
             public void handle(long now) {
 
-                //ONLY CHECK collision at move boundatres (move progress = 0)???
+                //only check collision at move boundatres (move progress = 0)???
 
-               
-                if (!Collision.wall_collision(pacman, board, tile_size)) {
-                pacman.move();
-                }
-              
-                if (Collision.sfood_collision(pacman, board, tile_size, gamestate)){
-
-                    board.set_tile(pacman.position[0] /tile_size, pacman.position[1] / tile_size, 'n');
-                    gamestate.setScore(gamestate.getScore() + 10);
-
-                }
-
-
+                Update.updateGame(board, pacman, tile_size, gamestate, ghost);
 
                 RenderScore.render(gamestate, scoreLabel);
                 Render.render_board(gc, board, tile_size);
                 Render.render_moving_object(pacman, tile_size);
+                Render.render_moving_object(ghost, tile_size);
 
 
 
@@ -108,9 +102,7 @@ public class PlayGame extends Application {
                 Controller.checkDirection(event, pacman);
 
                 } else {
-
                     Controller.checkDirectionStuck(event, pacman);
-
                 }
 
             }

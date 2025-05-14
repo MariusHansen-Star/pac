@@ -7,10 +7,13 @@ public class Ghost extends MovingObject {
 
     private int ghostState;
 
-    public Ghost(int speed, ImageView image, int[] position) {
+    public Ghost(int speed, ImageView image, int[] position, String direction, String nextDirection, int moveProgress) {
         this.speed=speed;
         this.image=image;
         this.position=position;
+        this.direction=direction;
+        this.nextDirection = nextDirection;
+        this.moveProgress = moveProgress;
     }
 
 
@@ -18,7 +21,65 @@ public class Ghost extends MovingObject {
 
     public void move() {
 
+        if(this.moveProgress < 40){
+
+            if (direction=="UP") {
+                image.setRotate(270);
+                this.position[0] = position[0] - speed;
+            }
+        
+
+            if (direction=="DOWN") {
+                image.setRotate(270);
+                this.position[0] = position[0] + speed;
+            }
+
+            if (direction=="LEFT") {
+                image.setRotate(270);
+                this.position[1] = position[1] - speed;
+            }
+
+            if (direction=="RIGHT") {
+                image.setRotate(270);
+                this.position[1] = position[1] + speed;
+            }
+
+            this.moveProgress = moveProgress + speed;
+
+        } else {
+            moveProgress = 0; 
+            if (nextDirection != null) {
+                this.direction = nextDirection;
+                nextDirection = null;
+            }
+        }
+        
+     
+
+
+    } 
+
+
+
+
+
+
+
+    
+
+    public void setPosition(int[] position){
+        this.position = position;
+        this.moveProgress = 0;
     }
+
+    public void setNextDirection(String direction){
+        this.nextDirection = direction;
+    }
+
+    public void setDirection(String direction){
+        this.direction = direction;
+    }
+
 
     public void scared() {
 

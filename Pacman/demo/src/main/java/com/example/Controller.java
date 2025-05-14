@@ -9,6 +9,7 @@ public class Controller {
 
     public static void checkDirection(KeyEvent event, Pacman pacman){
 
+
         if (event.getCode() == KeyCode.UP) {
             pacman.setNextDirection("UP");
         }
@@ -23,6 +24,12 @@ public class Controller {
 
 
         }
+
+
+
+
+
+
     }
 
 

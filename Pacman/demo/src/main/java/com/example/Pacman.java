@@ -22,10 +22,9 @@ public class Pacman extends MovingObject {
         this.moveProgress = moveProgress;
     }
 
+
     public void move() {
 
-
-      
 
 
             if(this.moveProgress < 40){
@@ -69,7 +68,10 @@ public class Pacman extends MovingObject {
      
 
 
-
+    public void setPosition(int[] position){
+        this.position = position;
+        this.moveProgress = 0;
+    }
     
 
 

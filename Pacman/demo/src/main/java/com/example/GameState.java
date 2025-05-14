@@ -29,6 +29,15 @@ public class GameState {
         return this.score;
     }
 
+    public int getGameState(){
+        return this.game_state;
+    }
+
+    public int getLife(){
+        return this.pacman_life;
+    }
+
+
 
     
 }

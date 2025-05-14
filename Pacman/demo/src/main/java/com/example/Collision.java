@@ -48,13 +48,35 @@ public class Collision {
             return true;
         }
         return false;
-
-
-
     }
 
 
+    public static boolean bfood_collision(MovingObject pacman,Board board, int tile_size, GameState gamestate){
 
+        int new_x = pacman.position[1] / tile_size; // x
+        int new_y = pacman.position[0] / tile_size; // y
+
+        if (board.map[new_y][new_x] == 'b'){
+            return true;
+        }
+        return false;
+    }
+
+
+    public static boolean ghost_collision(MovingObject pacman, MovingObject ghost, int tile_size, GameState gamestate){
+
+        int pac_x = pacman.position[1] / tile_size; // x
+        int pac_y = pacman.position[0] / tile_size; // y
+
+        int ghost_x = ghost.position[1] / tile_size;
+        int ghost_y = ghost.position[0] / tile_size;
+
+        if ((pac_x == ghost_x) & (pac_y == ghost_y)){
+            return true;
+        }
+        
+        return false;
+    }
 
     
 }
