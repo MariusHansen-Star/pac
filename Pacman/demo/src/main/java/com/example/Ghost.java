@@ -21,7 +21,7 @@ public class Ghost extends MovingObject {
 
     public void move() {
 
-        if(this.moveProgress < 40){
+        if(this.moveProgress < 20){
 
             if (direction=="UP") {
                 image.setRotate(270);

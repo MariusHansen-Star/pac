@@ -29,7 +29,7 @@ public class PlayGame extends Application {
     public void start(Stage stage) {
 
 
-        int tile_size = 40;
+        int tile_size = 20;
 
         //pacman pos: y = 6, x = 7
         Pacman pacman =  new Pacman(2,new ImageView("pac.png"),new int[]{tile_size * 6, tile_size * 7}, "RIGHT"
@@ -54,7 +54,7 @@ public class PlayGame extends Application {
 
 
         Pane root = new Pane();
-        Canvas canvas = new Canvas(tile_size*16, tile_size*16);
+        Canvas canvas = new Canvas(tile_size*board.map[0].length, tile_size*board.map.length);
         root.getChildren().addAll(canvas, pacman.image, ghost.image, scoreLabel);
         root.setStyle("-fx-background-color: black;");
 

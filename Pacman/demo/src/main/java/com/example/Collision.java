@@ -15,7 +15,7 @@ public class Collision {
         }
        
         if (pacman.direction.equals("DOWN")) {
-            new_y = pacman.position[0] + pacman.speed * 20 ;
+            new_y = pacman.position[0] + pacman.speed * (tile_size / pacman.speed) ;
         }
 
         if (pacman.direction.equals("LEFT")) {
@@ -23,7 +23,7 @@ public class Collision {
         }
 
         if (pacman.direction.equals("RIGHT")) {
-            new_x = pacman.position[1] + pacman.speed * 20 ;
+            new_x = pacman.position[1] + pacman.speed * (tile_size / pacman.speed) ;
         }
 
 
@@ -74,7 +74,7 @@ public class Collision {
         if ((pac_x == ghost_x) & (pac_y == ghost_y)){
             return true;
         }
-        
+
         return false;
     }
 

@@ -27,7 +27,7 @@ public class Pacman extends MovingObject {
 
 
 
-            if(this.moveProgress < 40){
+            if(this.moveProgress < 20){
 
                 if (direction=="UP") {
                     image.setRotate(270);
@@ -36,17 +36,17 @@ public class Pacman extends MovingObject {
             
 
                 if (direction=="DOWN") {
-                    image.setRotate(270);
+                    image.setRotate(90);
                     this.position[0] = position[0] + speed;
                 }
 
                 if (direction=="LEFT") {
-                    image.setRotate(270);
+                    image.setRotate(180);
                     this.position[1] = position[1] - speed;
                 }
 
                 if (direction=="RIGHT") {
-                    image.setRotate(270);
+                    image.setRotate(0);
                     this.position[1] = position[1] + speed;
                 }
 
