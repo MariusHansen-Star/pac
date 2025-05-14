@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 
 public class Update {
 
-    public static void updateGame(Board board, Pacman pacman, int tile_size, GameState gamestate, Ghost ghost1){
+    public static void updateGame(Board board, Pacman pacman, int tile_size, GameState gamestate, Ghost redghost, Ghost blueghost, Ghost pinkghost, Ghost orangeghost){
 
         // Pac movement
         if (!Collision.wall_collision(pacman, board, tile_size)) {
@@ -16,9 +16,11 @@ public class Update {
             }
 
 
-        //ghost1 movement
-        
-        GhostAI.chase(ghost1, pacman, board, tile_size);
+        //ghost movement
+        GhostAI.chase(redghost, pacman, board, tile_size);
+        GhostAI.chase(blueghost, pacman, board, tile_size);
+        GhostAI.chase(pinkghost, pacman, board, tile_size);
+        GhostAI.chase(orangeghost, pacman, board, tile_size);
 
 
         
@@ -40,7 +42,11 @@ public class Update {
 
         }
 
-        if (Collision.ghost_collision(pacman, ghost1, tile_size, gamestate)){
+
+
+        //checking collision with all ghosts;
+
+        if (Collision.ghost_collision(pacman, redghost, tile_size, gamestate)){
 
             if (gamestate.getGameState() == 1){
                 gamestate.setScore(gamestate.getScore() + 50);
@@ -48,7 +54,7 @@ public class Update {
             }
             else{ 
                 gamestate.setLife(gamestate.getLife() - 1);
-                pacman.setPosition(new int[] {tile_size * 6, tile_size * 7});
+                pacman.setPosition(new int[] {tile_size * 6, tile_size * 6});
             }
 
         }

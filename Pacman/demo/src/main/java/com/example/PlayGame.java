@@ -32,12 +32,18 @@ public class PlayGame extends Application {
         int tile_size = 20;
 
         //pacman pos: y = 6, x = 7
-        Pacman pacman =  new Pacman(2,new ImageView("pac.png"),new int[]{tile_size * 6, tile_size * 7}, "RIGHT"
+        Pacman pacman =  new Pacman(2,new ImageView("pac.png"),new int[]{tile_size * 6, tile_size * 6}, "RIGHT"
         , null, 0);
         Board board = new Board();
         GameState gamestate = new GameState(3, 0, 0);
 
-        Ghost ghost = new Ghost (2,new ImageView("redghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        Ghost redghost = new Ghost (2,new ImageView("redghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        , null, 0);
+        Ghost blueghost = new Ghost (2,new ImageView("blueghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        , null, 0);
+        Ghost pinkghost = new Ghost (2,new ImageView("pinkghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        , null, 0);
+        Ghost orangeghost = new Ghost (2,new ImageView("orangeghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
         , null, 0);
 
 
@@ -55,7 +61,7 @@ public class PlayGame extends Application {
 
         Pane root = new Pane();
         Canvas canvas = new Canvas(tile_size*board.map[0].length, tile_size*board.map.length);
-        root.getChildren().addAll(canvas, pacman.image, ghost.image, scoreLabel);
+        root.getChildren().addAll(canvas, pacman.image, redghost.image,blueghost.image, pinkghost.image, orangeghost.image, scoreLabel);
         root.setStyle("-fx-background-color: black;");
 
 
@@ -78,12 +84,15 @@ public class PlayGame extends Application {
 
                 //only check collision at move boundatres (move progress = 0)???
 
-                Update.updateGame(board, pacman, tile_size, gamestate, ghost);
+                Update.updateGame(board, pacman, tile_size, gamestate, redghost, blueghost, pinkghost, orangeghost);
 
                 RenderScore.render(gamestate, scoreLabel);
                 Render.render_board(gc, board, tile_size);
                 Render.render_moving_object(pacman, tile_size);
-                Render.render_moving_object(ghost, tile_size);
+                Render.render_moving_object(redghost, tile_size);
+                Render.render_moving_object(blueghost, tile_size);
+                Render.render_moving_object(pinkghost, tile_size);
+                Render.render_moving_object(orangeghost, tile_size);
 
 
 
