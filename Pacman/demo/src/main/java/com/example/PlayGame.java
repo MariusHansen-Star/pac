@@ -15,6 +15,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
 
+import javafx.scene.control.Label;
+
+
+
 
 
 
@@ -31,12 +35,24 @@ public class PlayGame extends Application {
         Pacman pacman =  new Pacman(2,new ImageView("pac.png"),new int[]{tile_size * 6, tile_size * 7}, "RIGHT"
         , null, 0);
         Board board = new Board();
+        GameState gamestate = new GameState(3, 1, 0);
 
-     
+
+
+        //score label
+        Label scoreLabel = new Label("Score: " + gamestate.getScore());
+        scoreLabel.setTextFill(Color.WHITE);
+        scoreLabel.setStyle("-fx-font-size: 20px; -fx-background-color: transparent;");
+        scoreLabel.setLayoutX(10);
+        scoreLabel.setLayoutY(10);
+      
+
 
         Pane root = new Pane();
         Canvas canvas = new Canvas(tile_size*16, tile_size*16);
-        root.getChildren().addAll(canvas, pacman.image);
+        root.getChildren().addAll(canvas, pacman.image, scoreLabel);
+        root.setStyle("-fx-background-color: black;");
+
 
         Scene scene = new Scene(root, Color.BLACK);
         stage.setScene(scene);
@@ -62,13 +78,19 @@ public class PlayGame extends Application {
                 pacman.move();
                 }
               
-                if (Collision.sfood_collision(pacman, board, tile_size)){
+                if (Collision.sfood_collision(pacman, board, tile_size, gamestate)){
+
                     board.set_tile(pacman.position[0] /tile_size, pacman.position[1] / tile_size, 'n');
+                    gamestate.setScore(gamestate.getScore() + 10);
 
                 }
 
+
+
+                RenderScore.render(gamestate, scoreLabel);
                 Render.render_board(gc, board, tile_size);
                 Render.render_moving_object(pacman, tile_size);
+
 
 
             }
@@ -87,7 +109,7 @@ public class PlayGame extends Application {
 
                 } else {
 
-                    Controller.checkDirection2(event, pacman);
+                    Controller.checkDirectionStuck(event, pacman);
 
                 }
 
@@ -105,80 +127,6 @@ public class PlayGame extends Application {
 
 
      
-        
-        
-
-
-
-    
-
-
-        
-
-
-        
-
-
-        /* 
-
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                if (pacman.direction=="UP") {
-                    pacmanImage.setRotate(270);
-                    pacmanImage.setY(pacmanImage.getY() - pacman.speed);
-                }
-               
-
-                if (pacman.direction=="DOWN") {
-                    pacmanImage.setRotate(90);
-                    pacmanImage.setY(pacmanImage.getY() + pacman.speed);
-                }
-
-                if (pacman.direction=="LEFT") {
-                    pacmanImage.setRotate(180);
-                    pacmanImage.setX(pacmanImage.getX() - pacman.speed);
-                }
-
-                if (pacman.direction=="RIGHT") {
-                    pacmanImage.setRotate(0);
-                    pacmanImage.setX(pacmanImage.getX() + pacman.speed);
-                }
-
-                //if (pacmanImage.getX() >= 620 || pacmanImage.getX() <= 0) {
-                  //  pacmanImage.setX(pacmanImage.getX() - pacman.speed);
-                    //pacman.speed *= 0.5;
-                //}
-
-
-                //test
-
-                if (pacmanImage.getX() >= 400) {
-                    pacmanImage.setX(pacmanImage.getX() - pacman.speed);
-
-                
-                }
-
-                if (pacmanImage.getX() <= 100) {
-                    pacmanImage.setX(pacmanImage.getX() + pacman.speed);
-
-                
-                }
-
-                if (pacmanImage.getY() >= 610) {
-                    pacmanImage.setY(pacmanImage.getY() - pacman.speed);
-                }
-                
-                if (pacmanImage.getY() <= 0) {
-                    pacmanImage.setY(pacmanImage.getY() + pacman.speed);
-                }
-            }
-
-        };
-
-
-        timer.start();
-        */
     
 
         

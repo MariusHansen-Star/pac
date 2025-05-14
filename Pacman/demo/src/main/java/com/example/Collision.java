@@ -39,15 +39,13 @@ public class Collision {
     }
 
 
-    public static boolean sfood_collision(MovingObject pacman,Board board, int tile_size){
+    public static boolean sfood_collision(MovingObject pacman,Board board, int tile_size, GameState gamestate){
 
         int new_x = pacman.position[1] / tile_size; // x
         int new_y = pacman.position[0] / tile_size; // y
 
         if (board.map[new_y][new_x] == 's'){
             return true;
-
-
         }
         return false;
 

@@ -26,7 +26,7 @@ public class Controller {
     }
 
 
-    public static void checkDirection2(KeyEvent event, Pacman pacman){
+    public static void checkDirectionStuck(KeyEvent event, Pacman pacman){
 
         if (event.getCode() == KeyCode.UP) {
             pacman.setDirection("UP");

@@ -55,6 +55,7 @@ public class Render {
         
         
         gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+        
 
         for (int row = 0; row < board.map.length; row++) {
                 for (int column = 0; column < board.map[0].length; column++) {
