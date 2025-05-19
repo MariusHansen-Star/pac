@@ -23,7 +23,9 @@ public class Pacman extends MovingObject {
     }
 
 
-    public void move() { // THIS SHOULD BE IN MOVEMENT CLASS: BREAKING SOLID PRINCIPLE.
+    public void move() { // THIS SHOULD BE IN MOVEMENT CLASS: BREAKING SOLID PRINCIPLE. måske skal vi flytte image.setRotate over i en anden klasse,
+        //da vi ændrer på det grafiske.
+        //det samme skal vi nok også gøre med logikken i move().
 
 
 
