@@ -5,11 +5,13 @@ public class GameState {
     private int score;
     private int pacman_life;
     private int game_state;
+    private int power_state_timer;
 
     public GameState(int pac_life, int gamestate, int score){
         this.pacman_life = pac_life;
         this.game_state = gamestate;
         this.score = score;
+        this.power_state_timer = 0;
     }
     
     public void setScore(int score){
@@ -23,6 +25,14 @@ public class GameState {
 
     public void setGameState(int gamestate){
         this.game_state = gamestate;
+    }
+
+    public void setTimer(int timer){
+        this.power_state_timer = timer;
+    }
+
+    public int getTimer(){
+        return this.power_state_timer;
     }
 
     public int getScore(){

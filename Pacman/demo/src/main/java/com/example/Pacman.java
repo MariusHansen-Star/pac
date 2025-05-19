@@ -23,7 +23,7 @@ public class Pacman extends MovingObject {
     }
 
 
-    public void move() {
+    public void move() { // THIS SHOULD BE IN MOVEMENT CLASS: BREAKING SOLID PRINCIPLE.
 
 
 

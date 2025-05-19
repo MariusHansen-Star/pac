@@ -1,8 +1,5 @@
 package com.example;
 
-import java.util.Random;
-
-import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
 
@@ -37,19 +34,22 @@ public class Update {
 
             board.set_tile(pacman.position[0] / tile_size, pacman.position[1] / tile_size, 'n');
             gamestate.setScore(gamestate.getScore() + 50);
-            gamestate.setGameState(1); // 1 is ghost scared
-            pacman.image.setImage(new Image ("handsome_squidward.png"));
+            
+
+            UpdateGameState.ToPowerState(gamestate, redghost, blueghost, pinkghost, orangeghost);
+
 
         }
 
 
 
-        //checking collision with all ghosts;
+        //checking collision with ghost
 
         if (Collision.ghost_collision(pacman, redghost, tile_size, gamestate)){
 
             if (gamestate.getGameState() == 1){
                 gamestate.setScore(gamestate.getScore() + 50);
+                redghost.setPosition(new int[] {15*tile_size,15*tile_size});
 
             }
             else{ 
@@ -60,6 +60,26 @@ public class Update {
         }
 
 
+        //If in power state
+
+        if(gamestate.getGameState() == 1){
+                gamestate.setTimer(gamestate.getTimer() - 1); 
+
+                if(gamestate.getTimer() == 0){
+                
+                    UpdateGameState.ToNormalState(gamestate, redghost, blueghost, pinkghost, orangeghost);
+
+
+
+
+                }
+
+        }
+   
+
+
+        
+        
 
 
 
