@@ -11,7 +11,7 @@ public class Collision {
         int new_y = pacman.position[0];
 
         if (pacman.direction.equals("UP")) {
-            new_y = pacman.position[0] - pacman.speed ;
+            new_y = pacman.position[0] - pacman.speed + 1 ;
         }
        
         if (pacman.direction.equals("DOWN")) {
