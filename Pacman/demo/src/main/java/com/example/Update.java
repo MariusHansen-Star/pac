@@ -45,35 +45,34 @@ public class Update {
 
         //checking collision with ghost
 
-        if (Collision.ghost_collision(pacman, redghost, tile_size, gamestate)){
-
-            if (gamestate.getGameState() == 1){
-                gamestate.setScore(gamestate.getScore() + 50);
-                redghost.setPosition(new int[] {15*tile_size,15*tile_size});
-
-            }
-            else{ 
-                gamestate.setLife(gamestate.getLife() - 1);
-                pacman.setPosition(new int[] {tile_size * 6, tile_size * 6});
-            }
-
-        }
+        Collision.ghost_collision(pacman, redghost, tile_size, gamestate);
+        Collision.ghost_collision(pacman, blueghost, tile_size, gamestate);
+        Collision.ghost_collision(pacman, pinkghost, tile_size, gamestate);
+        Collision.ghost_collision(pacman, orangeghost, tile_size, gamestate);
 
 
-        //If in power state
+
+       // power state counter
 
         if(gamestate.getGameState() == 1){
                 gamestate.setTimer(gamestate.getTimer() - 1); 
-
                 if(gamestate.getTimer() == 0){
-                
                     UpdateGameState.ToNormalState(gamestate, redghost, blueghost, pinkghost, orangeghost);
 
-
-
-
                 }
+        }
 
+
+
+        //Win condition
+        if (WinCondition.check(board)){
+            gamestate.setGameState(3);
+
+        }
+
+        //lose condition
+        if (gamestate.getLife() == 0){
+            gamestate.setGameState(3);
         }
    
 
@@ -84,8 +83,6 @@ public class Update {
 
 
     }
-
-
 
     
 }

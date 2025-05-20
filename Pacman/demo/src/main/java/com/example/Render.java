@@ -26,6 +26,7 @@ import javafx.animation.AnimationTimer;
 public class Render {
 
 
+
     public static void render_board(GraphicsContext gc,Board board, int tile_size) {
 
 

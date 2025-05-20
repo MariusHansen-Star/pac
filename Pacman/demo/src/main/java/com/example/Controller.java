@@ -47,4 +47,15 @@ public class Controller {
     }
 
 
+    public static void checkClick(KeyEvent event, GameState gamestate){
+
+        if(event.getCode() == KeyCode.SPACE){
+            gamestate.setGameState(4);
+
+
+        }
+
+    }
+
+
 }

@@ -4,9 +4,10 @@ import javafx.scene.control.Label;
 
 public class RenderScore {
 
-    public static void render(GameState gamestate, Label label){
+    public static void render(GameState gamestate, Label scorelabel, Label lifelabel ){
 
-        label.setText("Score: " + gamestate.getScore());
+        scorelabel.setText("Score: " + gamestate.getScore());
+        lifelabel.setText("Life:" + gamestate.getLife());
 
 
 

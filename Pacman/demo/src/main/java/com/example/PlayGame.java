@@ -25,6 +25,15 @@ import javafx.scene.control.Label;
 
 public class PlayGame extends Application {
 
+    
+    Pacman pacman;
+    Board board;
+    GameState gamestate;
+    Ghost redghost;
+    Ghost blueghost;
+    Ghost pinkghost;
+    Ghost orangeghost;
+
     @Override
     public void start(Stage stage) {
 
@@ -36,8 +45,7 @@ public class PlayGame extends Application {
         Pacman pacman =  new Pacman(start_speed,new ImageView("pac.png"),new int[]{tile_size * 6, tile_size * 6}, "RIGHT"
         , null, 0);
         Board board = new Board();
-        GameState gamestate = new GameState(3, 0, 0);
-
+        GameState gamestate = new GameState(2, 0, 0);
         Ghost redghost = new Ghost (start_speed,new ImageView("redghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
         , null, 0);
         Ghost blueghost = new Ghost (start_speed,new ImageView("blueghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
@@ -57,12 +65,20 @@ public class PlayGame extends Application {
         scoreLabel.setStyle("-fx-font-size: 20px; -fx-background-color: transparent;");
         scoreLabel.setLayoutX(10);
         scoreLabel.setLayoutY(10);
+
+
+        //Life label
+        Label LifeLabel = new Label("Lifes: " + gamestate.getLife());
+        LifeLabel.setTextFill(Color.WHITE);
+        LifeLabel.setStyle("-fx-font-size: 20px; -fx-background-color: transparent;");
+        LifeLabel.setLayoutX(500);
+        LifeLabel.setLayoutY(10);
       
 
 
         Pane root = new Pane();
         Canvas canvas = new Canvas(tile_size*board.map[0].length, tile_size*board.map.length);
-        root.getChildren().addAll(canvas, pacman.image, redghost.image,blueghost.image, pinkghost.image, orangeghost.image, scoreLabel);
+        root.getChildren().addAll(canvas, pacman.image, redghost.image,blueghost.image, pinkghost.image, orangeghost.image, scoreLabel, LifeLabel);
         root.setStyle("-fx-background-color: black;");
 
 
@@ -77,31 +93,46 @@ public class PlayGame extends Application {
         Render.render_board(gc, board, tile_size);  
 
 
-
-
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
 
                 //only check collision at move boundatres (move progress = 0)???
 
-                Update.updateGame(board, pacman, tile_size, gamestate, redghost, blueghost, pinkghost, orangeghost);
+                    if(gamestate.getGameState() == 0 || gamestate.getGameState() == 1){
+                        Update.updateGame(board, pacman, tile_size, gamestate, redghost, blueghost, pinkghost, orangeghost);
 
-                RenderScore.render(gamestate, scoreLabel);
-                Render.render_board(gc, board, tile_size);
-                Render.render_moving_object(pacman, tile_size);
-                Render.render_moving_object(redghost, tile_size);
-                Render.render_moving_object(blueghost, tile_size);
-                Render.render_moving_object(pinkghost, tile_size);
-                Render.render_moving_object(orangeghost, tile_size);
+                        RenderScore.render(gamestate, scoreLabel, LifeLabel);
+                        Render.render_board(gc, board, tile_size);
+                        Render.render_moving_object(pacman, tile_size);
+                        Render.render_moving_object(redghost, tile_size);
+                        Render.render_moving_object(blueghost, tile_size);
+                        Render.render_moving_object(pinkghost, tile_size);
+                        Render.render_moving_object(orangeghost, tile_size);
+                       
+                    } else if(gamestate.getGameState() == 3) {
 
+                        RenderMenu.render(gc ,gamestate, scoreLabel, LifeLabel);
 
+                        
+                    } else{ // Restarts game
+                        pacman.setPosition(new int[]{tile_size * 6, tile_size * 6});
+                        board.restart();
+                        gamestate.setLife(2);
+                        gamestate.setScore(0);
+                        gamestate.setGameState(0);
 
+                        LifeLabel.setLayoutX(500);
+                        LifeLabel.setLayoutY(10);
+
+                        scoreLabel.setLayoutX(10);
+                        scoreLabel.setLayoutY(10);
+
+                    }
             }
         };
 
         timer.start();
-
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -114,6 +145,9 @@ public class PlayGame extends Application {
                 } else {
                     Controller.checkDirectionStuck(event, pacman);
                 }
+
+
+                Controller.checkClick(event, gamestate);
 
             }
         });

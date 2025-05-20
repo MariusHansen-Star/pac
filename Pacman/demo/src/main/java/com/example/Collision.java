@@ -11,19 +11,19 @@ public class Collision {
         int new_y = pacman.position[0];
 
         if (pacman.direction.equals("UP")) {
-            new_y = pacman.position[0] - pacman.speed + 1 ;
+            new_y = pacman.position[0] - pacman.speed;
         }
        
         if (pacman.direction.equals("DOWN")) {
-            new_y = pacman.position[0] + pacman.speed * (tile_size / pacman.speed) ;
+            new_y = pacman.position[0] + pacman.speed + (tile_size - 1);
         }
 
         if (pacman.direction.equals("LEFT")) {
-            new_x = pacman.position[1] - pacman.speed ;
+            new_x = pacman.position[1] - pacman.speed;
         }
 
         if (pacman.direction.equals("RIGHT")) {
-            new_x = pacman.position[1] + pacman.speed * (tile_size / pacman.speed) ;
+            new_x = pacman.position[1] + pacman.speed + (tile_size - 1);
         }
 
 
@@ -63,7 +63,7 @@ public class Collision {
     }
 
 
-    public static boolean ghost_collision(MovingObject pacman, MovingObject ghost, int tile_size, GameState gamestate){
+    public static void ghost_collision(MovingObject pacman, MovingObject ghost, int tile_size, GameState gamestate){
 
         int pac_x = pacman.position[1] / tile_size; // x
         int pac_y = pacman.position[0] / tile_size; // y
@@ -72,10 +72,20 @@ public class Collision {
         int ghost_y = ghost.position[0] / tile_size;
 
         if ((pac_x == ghost_x) & (pac_y == ghost_y)){
-            return true;
-        }
 
-        return false;
+            if (gamestate.getGameState() == 1){
+                gamestate.setScore(gamestate.getScore() + 50);
+                ghost.setPosition(new int[] {15*tile_size,15*tile_size});
+
+            }
+            else{ 
+                gamestate.setLife(gamestate.getLife() - 1);
+                pacman.setPosition(new int[] {tile_size * 6, tile_size * 6});
+            }
+
+
+        }
+    
     }
 
     
