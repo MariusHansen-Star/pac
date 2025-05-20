@@ -122,6 +122,13 @@ public class PlayGame extends Application {
                         gamestate.setScore(0);
                         gamestate.setGameState(0);
 
+
+                        redghost.setPosition(new int[]{tile_size * 10, tile_size * 10});
+                        blueghost.setPosition(new int[]{tile_size * 10, tile_size * 10});
+                        pinkghost.setPosition(new int[]{tile_size * 10, tile_size * 10});
+                        orangeghost.setPosition(new int[]{tile_size * 10, tile_size * 10});
+
+
                         LifeLabel.setLayoutX(500);
                         LifeLabel.setLayoutY(10);
 
