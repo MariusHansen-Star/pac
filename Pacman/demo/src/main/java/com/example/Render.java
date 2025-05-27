@@ -23,38 +23,30 @@ import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
 
 
+
+
 public class Render {
 
 
 
-    public static void render_board(GraphicsContext gc,Board board, int tile_size) {
 
+    public static void render_board(GraphicsContext gc,Board board, int tile_size, NonMovingObject wall, NonMovingObject bigFood, NonMovingObject normalFood) {
 
-        //INIT ALL FIX LATER
-
-        Wall wall = new Wall(new Image("wall.png"), null);
-        BigFood bigFood = new BigFood(new Image("bigfood.jpg"), null);
-        NormalFood normalFood = new NormalFood(new Image("normalfood.png"), null);
-    
+       
         Image wallImage = wall.getImage();
         Image bigFoodImage = bigFood.getImage();
         Image normalFoodImage = normalFood.getImage();
-    
-        
-
-
-
-        
+  
         
         gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
         
 
-        for (int row = 0; row < board.map.length; row++) {
-                for (int column = 0; column < board.map[0].length; column++) {
+        for (int row = 0; row < board.getBoard().length; row++) {
+                for (int column = 0; column < board.getBoard()[0].length; column++) {
                     double x = column * tile_size;
                     double y = row * tile_size;
         
-                    char tile = board.map[row][column];
+                    char tile = board.getBoard()[row][column];
         
                     switch (tile) {
         
@@ -106,31 +98,24 @@ public class Render {
     }
 
                     
-     
-
-
-
-
-
-    
-    public static void render_moving_object(MovingObject mobject, int tile_size){
-
-
+    public static void render_moving_object(Pacman mObject, int tile_size){
         
-        mobject.image.setX(mobject.position[1]);
-        mobject.image.setY(mobject.position[0]);
-        mobject.image.setFitHeight(tile_size);
-        mobject.image.setFitWidth(tile_size);
-
-
+        mObject.getImage().setX(mObject.getPosition()[1]);
+        mObject.getImage().setY(mObject.getPosition()[0]);
+        mObject.getImage().setFitHeight(tile_size);
+        mObject.getImage().setFitWidth(tile_size);
 
     }
 
+    public static void render_moving_object(Ghost mObject, int tile_size){
+        
+        mObject.getImage().setX(mObject.getPosition()[1]);
+        mObject.getImage().setY(mObject.getPosition()[0]);
+        mObject.getImage().setFitHeight(tile_size);
+        mObject.getImage().setFitWidth(tile_size);
 
+    }
     
-    
-
-
 
 
 

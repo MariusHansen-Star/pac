@@ -46,14 +46,20 @@ public class PlayGame extends Application {
         , null, 0);
         Board board = new Board();
         GameState gamestate = new GameState(2, 0, 0);
-        Ghost redghost = new Ghost (start_speed,new ImageView("redghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        Ghost redghost = new Ghost (start_speed,new ImageView("redghost.png"),new int[]{tile_size * 1, tile_size * 3}, "RIGHT"
         , null, 0);
-        Ghost blueghost = new Ghost (start_speed,new ImageView("blueghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        Ghost blueghost = new Ghost (start_speed,new ImageView("blueghost.png"),new int[]{tile_size * 1, tile_size * 3}, "RIGHT"
         , null, 0);
-        Ghost pinkghost = new Ghost (start_speed,new ImageView("pinkghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        Ghost pinkghost = new Ghost (start_speed,new ImageView("pinkghost.png"),new int[]{tile_size * 1, tile_size * 3}, "RIGHT"
         , null, 0);
-        Ghost orangeghost = new Ghost (start_speed,new ImageView("orangeghost.png"),new int[]{tile_size * 2, tile_size * 4}, "RIGHT"
+        Ghost orangeghost = new Ghost (start_speed,new ImageView("orangeghost.png"),new int[]{tile_size * 1, tile_size * 3}, "RIGHT"
         , null, 0);
+
+        Wall wall = new Wall (new Image("wall.png"));
+        BigFood bigFood = new BigFood(new Image("bigfood.jpg"));
+        NormalFood normalFood = new NormalFood(new Image("normalfood.png"));
+
+
 
 
 
@@ -77,8 +83,8 @@ public class PlayGame extends Application {
 
 
         Pane root = new Pane();
-        Canvas canvas = new Canvas(tile_size*board.map[0].length, tile_size*board.map.length);
-        root.getChildren().addAll(canvas, pacman.image, redghost.image,blueghost.image, pinkghost.image, orangeghost.image, scoreLabel, LifeLabel);
+        Canvas canvas = new Canvas(tile_size*board.getBoard()[0].length, tile_size*board.getBoard().length);
+        root.getChildren().addAll(canvas, pacman.getImage(), redghost.getImage(),blueghost.getImage(), pinkghost.getImage(), orangeghost.getImage(), scoreLabel, LifeLabel);
         root.setStyle("-fx-background-color: black;");
 
 
@@ -89,8 +95,10 @@ public class PlayGame extends Application {
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        //init board
-        Render.render_board(gc, board, tile_size);  
+        //init board        
+        Render.render_board(gc, board, tile_size, wall, bigFood, normalFood);  
+      
+
 
 
         AnimationTimer timer = new AnimationTimer() {
@@ -103,7 +111,7 @@ public class PlayGame extends Application {
                         Update.updateGame(board, pacman, tile_size, gamestate, redghost, blueghost, pinkghost, orangeghost);
 
                         RenderScore.render(gamestate, scoreLabel, LifeLabel);
-                        Render.render_board(gc, board, tile_size);
+                        Render.render_board(gc, board, tile_size, wall, bigFood, normalFood);
                         Render.render_moving_object(pacman, tile_size);
                         Render.render_moving_object(redghost, tile_size);
                         Render.render_moving_object(blueghost, tile_size);

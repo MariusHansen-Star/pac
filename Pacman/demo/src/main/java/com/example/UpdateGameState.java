@@ -11,16 +11,16 @@ public class UpdateGameState {
             gamestate.setGameState(1); // 1 is ghost scared
             gamestate.setTimer(500);
 
-            redghost.image.setImage(new Image ("handsome_squidward.png"));
-            blueghost.image.setImage(new Image ("handsome_squidward.png"));
-            pinkghost.image.setImage(new Image ("handsome_squidward.png"));
-            orangeghost.image.setImage(new Image ("handsome_squidward.png"));
+            redghost.getImage().setImage(new Image ("handsome_squidward.png"));
+            blueghost.getImage().setImage(new Image ("handsome_squidward.png"));
+            pinkghost.getImage().setImage(new Image ("handsome_squidward.png"));
+            orangeghost.getImage().setImage(new Image ("handsome_squidward.png"));
 
 
-            redghost.speed = redghost.speed / 2;
-            blueghost.speed = blueghost.speed / 2;
-            pinkghost.speed = pinkghost.speed / 2;
-            orangeghost.speed = orangeghost.speed / 2;
+            redghost.setSpeed(redghost.getSpeed() / 2); 
+            blueghost.setSpeed(blueghost.getSpeed() / 2); 
+            pinkghost.setSpeed(pinkghost.getSpeed() / 2); 
+            orangeghost.setSpeed(orangeghost.getSpeed() / 2); 
 
         } else{
             gamestate.setTimer(500);
@@ -34,16 +34,16 @@ public class UpdateGameState {
 
         gamestate.setGameState(0); // 1 is ghost scared
 
-        redghost.image.setImage(new Image ("redghost.png"));
-        blueghost.image.setImage(new Image ("blueghost.png"));
-        pinkghost.image.setImage(new Image ("pinkghost.png"));
-        orangeghost.image.setImage(new Image ("orangeghost.png"));
+        redghost.getImage().setImage(new Image ("redghost.png"));
+        blueghost.getImage().setImage(new Image ("blueghost.png"));
+        pinkghost.getImage().setImage(new Image ("pinkghost.png"));
+        orangeghost.getImage().setImage(new Image ("orangeghost.png"));
 
 
-        redghost.speed = redghost.speed * 2;
-        blueghost.speed = blueghost.speed * 2;
-        pinkghost.speed = pinkghost.speed * 2;
-        orangeghost.speed = orangeghost.speed * 2;
+        redghost.setSpeed(redghost.getSpeed() * 2);
+        blueghost.setSpeed(blueghost.getSpeed() * 2);
+        pinkghost.setSpeed(pinkghost.getSpeed() * 2);
+        orangeghost.setSpeed(orangeghost.getSpeed() * 2);
 
     }
 

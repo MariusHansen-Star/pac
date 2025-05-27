@@ -6,6 +6,9 @@ import javafx.scene.image.Image;
 
 abstract class NonMovingObject {
     public Image image;
-    public int[] position;
+
+    public Image getImage(){
+        return this.image;
+    }
     
 }

@@ -17,26 +17,37 @@ public class Update {
         GhostAI.chase(redghost, pacman, board, tile_size);
         GhostAI.chase(blueghost, pacman, board, tile_size);
         GhostAI.chase(pinkghost, pacman, board, tile_size);
-        GhostAI.chase(orangeghost, pacman, board, tile_size);
-
-
+        GhostAI.chase(orangeghost, pacman, board, tile_size);  
         
 
         //Checks collisions
         if (Collision.sfood_collision(pacman, board, tile_size, gamestate)){
 
-            board.set_tile(pacman.position[0] /tile_size, pacman.position[1] / tile_size, 'n');
+            board.set_tile(pacman.getPosition()[0] /tile_size, pacman.getPosition()[1] / tile_size, 'n');
             gamestate.setScore(gamestate.getScore() + 10);
+
+
+                 //Win condition
+            if (WinCondition.check(board)){
+            gamestate.setGameState(3);
+
+        }
 
         }
 
         if (Collision.bfood_collision(pacman, board, tile_size, gamestate)){
 
-            board.set_tile(pacman.position[0] / tile_size, pacman.position[1] / tile_size, 'n');
+            board.set_tile(pacman.getPosition()[0] / tile_size, pacman.getPosition()[1] / tile_size, 'n');
             gamestate.setScore(gamestate.getScore() + 50);
             
 
             UpdateGameState.ToPowerState(gamestate, redghost, blueghost, pinkghost, orangeghost);
+
+                 //Win condition
+            if (WinCondition.check(board)){
+            gamestate.setGameState(3);
+
+        }
 
 
         }
@@ -64,20 +75,13 @@ public class Update {
 
 
 
-        //Win condition
-        if (WinCondition.check(board)){
-            gamestate.setGameState(3);
-
-        }
+   
 
         //lose condition
         if (gamestate.getLife() == 0){
             gamestate.setGameState(3);
         }
    
-
-
-        
         
 
 

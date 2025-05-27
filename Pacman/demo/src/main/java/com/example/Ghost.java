@@ -3,9 +3,15 @@ package com.example;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Ghost extends MovingObject {
+public class Ghost implements MovingObject {
 
-    private int ghostState;
+    private int speed;
+    private ImageView image;
+    private int[] position;
+    private String direction;
+    private int moveProgress;
+    private String nextDirection; 
+
 
     public Ghost(int speed, ImageView image, int[] position, String direction, String nextDirection, int moveProgress) {
         this.speed=speed;
@@ -74,7 +80,15 @@ public class Ghost extends MovingObject {
 
     public void setDirection(String direction){
         this.direction = direction;
+    
     }
+
+    public void setSpeed(int speed){
+        this.speed = speed;
+
+    }
+
+
 
 
     public void scared() {
@@ -88,5 +102,26 @@ public class Ghost extends MovingObject {
     public ImageView getImage() {
         return this.image;
     }
+
+    public int[] getPosition(){
+        return this.position;
+
+    }
     
+    public int getSpeed(){
+        return this.speed;
+
+    }
+
+
+
+
+    public String getDirection(){
+        return this.direction;
+
+    }
+
+
+
+
 }

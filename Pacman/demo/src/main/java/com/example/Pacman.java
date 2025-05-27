@@ -8,8 +8,14 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
-public class Pacman extends MovingObject {
+public class Pacman implements MovingObject {
 
+    private int speed;
+    private ImageView image;
+    private int[] position;
+    private String direction;
+    private int moveProgress;
+    private String nextDirection; 
 
     //Image image = new Image("pac.png");
 
@@ -23,7 +29,7 @@ public class Pacman extends MovingObject {
     }
 
 
-    public void move() { // THIS SHOULD BE IN MOVEMENT CLASS: BREAKING SOLID PRINCIPLE.
+    public void move() { 
 
 
 
@@ -88,10 +94,17 @@ public class Pacman extends MovingObject {
     }
     
 
+    public int[] getPosition(){
+        return this.position;
+    }
 
+    public int getSpeed(){
+        return this.speed;
+    }
 
-
-
+    public String getDirection(){
+        return this.direction;
+    }
 
     
 }
