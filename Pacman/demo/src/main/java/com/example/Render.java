@@ -1,27 +1,7 @@
 package com.example;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
-import javafx.animation.AnimationTimer;
-
 
 
 
@@ -105,6 +85,24 @@ public class Render {
         mObject.getImage().setFitHeight(tile_size);
         mObject.getImage().setFitWidth(tile_size);
 
+        String direction = mObject.getDirection();
+
+        if (direction=="UP") {
+            mObject.getImage().setRotate(270);
+        }
+    
+
+        if (direction=="DOWN") {
+            mObject.getImage().setRotate(90);
+        }
+
+        if (direction=="LEFT") {
+            mObject.getImage().setRotate(180);
+        }
+
+        if (direction=="RIGHT") {
+            mObject.getImage().setRotate(0);
+        }
     }
 
     public static void render_moving_object(Ghost mObject, int tile_size){

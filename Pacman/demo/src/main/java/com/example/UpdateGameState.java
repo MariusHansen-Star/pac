@@ -9,12 +9,12 @@ public class UpdateGameState {
 
         if(gamestate.getGameState() == 0){
             gamestate.setGameState(1); // 1 is ghost scared
-            gamestate.setTimer(500);
+            gamestate.setTimer(251);
 
-            redghost.getImage().setImage(new Image ("handsome_squidward.png"));
-            blueghost.getImage().setImage(new Image ("handsome_squidward.png"));
-            pinkghost.getImage().setImage(new Image ("handsome_squidward.png"));
-            orangeghost.getImage().setImage(new Image ("handsome_squidward.png"));
+            redghost.getImage().setImage(new Image ("Vulnerable-ghost.png"));
+            blueghost.getImage().setImage(new Image ("Vulnerable-ghost.png"));
+            pinkghost.getImage().setImage(new Image ("Vulnerable-ghost.png"));
+            orangeghost.getImage().setImage(new Image ("Vulnerable-ghost.png"));
 
 
             redghost.setSpeed(redghost.getSpeed() / 2); 
@@ -23,7 +23,8 @@ public class UpdateGameState {
             orangeghost.setSpeed(orangeghost.getSpeed() / 2); 
 
         } else{
-            gamestate.setTimer(500);
+            gamestate.setTimer(251);
+
 
         }
 

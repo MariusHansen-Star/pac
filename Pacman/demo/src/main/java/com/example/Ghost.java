@@ -1,6 +1,4 @@
 package com.example;
-
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Ghost implements MovingObject {
@@ -90,15 +88,6 @@ public class Ghost implements MovingObject {
 
 
 
-
-    public void scared() {
-
-    }
-
-    public void chase() {
-
-    }
-
     public ImageView getImage() {
         return this.image;
     }
@@ -114,14 +103,9 @@ public class Ghost implements MovingObject {
     }
 
 
-
-
     public String getDirection(){
         return this.direction;
 
     }
-
-
-
 
 }

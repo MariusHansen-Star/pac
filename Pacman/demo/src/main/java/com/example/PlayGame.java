@@ -7,11 +7,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
 
@@ -24,15 +22,6 @@ import javafx.scene.control.Label;
 
 
 public class PlayGame extends Application {
-
-    
-    Pacman pacman;
-    Board board;
-    GameState gamestate;
-    Ghost redghost;
-    Ghost blueghost;
-    Ghost pinkghost;
-    Ghost orangeghost;
 
     @Override
     public void start(Stage stage) {
@@ -64,7 +53,7 @@ public class PlayGame extends Application {
 
 
 
-
+        //Brugt tankegang til builder pattern
         //score label
         Label scoreLabel = new Label("Score: " + gamestate.getScore());
         scoreLabel.setTextFill(Color.WHITE);
@@ -124,18 +113,11 @@ public class PlayGame extends Application {
 
                         
                     } else{ // Restarts game
-                        pacman.setPosition(new int[]{tile_size * 6, tile_size * 6});
-                        board.restart();
-                        gamestate.setLife(2);
-                        gamestate.setScore(0);
-                        gamestate.setGameState(0);
-
-
-                        redghost.setPosition(new int[]{tile_size * 10, tile_size * 10});
-                        blueghost.setPosition(new int[]{tile_size * 10, tile_size * 10});
-                        pinkghost.setPosition(new int[]{tile_size * 10, tile_size * 10});
-                        orangeghost.setPosition(new int[]{tile_size * 10, tile_size * 10});
-
+                       
+                       
+                        Restart.resetPosition(pacman, redghost, blueghost, pinkghost, orangeghost, tile_size);
+                        Restart.resetBoard(board);
+                        Restart.resetGamestate(gamestate);
 
                         LifeLabel.setLayoutX(500);
                         LifeLabel.setLayoutY(10);
@@ -173,18 +155,9 @@ public class PlayGame extends Application {
 }
 
 
-
-        
-
-
-     
-    
-
-        
-    
-
     public static void main(String[] args) {
         launch();
     }
     
-}
+}// 2 .. 20 ..2 4 6. 7.8.9. ..11, 13 15, 17 19 21. 
+ // 

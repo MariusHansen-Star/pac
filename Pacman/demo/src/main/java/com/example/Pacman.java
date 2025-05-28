@@ -1,12 +1,6 @@
 package com.example;
-
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
+
 
 public class Pacman implements MovingObject {
 
@@ -32,27 +26,26 @@ public class Pacman implements MovingObject {
     public void move() { 
 
 
+        
 
             if(this.moveProgress < 20){
 
+                
                 if (direction=="UP") {
-                    image.setRotate(270);
                     this.position[0] = position[0] - speed;
                 }
             
 
                 if (direction=="DOWN") {
-                    image.setRotate(90);
+                    
                     this.position[0] = position[0] + speed;
                 }
 
                 if (direction=="LEFT") {
-                    image.setRotate(180);
                     this.position[1] = position[1] - speed;
                 }
 
                 if (direction=="RIGHT") {
-                    image.setRotate(0);
                     this.position[1] = position[1] + speed;
                 }
 
@@ -63,6 +56,8 @@ public class Pacman implements MovingObject {
                 if (nextDirection != null) {
                     this.direction = nextDirection;
                     nextDirection = null;
+                
+                
                 }
             }
             
