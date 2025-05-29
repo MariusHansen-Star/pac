@@ -23,48 +23,98 @@ public class Pacman implements MovingObject {
     }
 
 
-    public void move() { 
+    public void move(Board board) { 
+        
+            if(!Collision.wall_collision(this, board, 20)){
+
+                if(this.moveProgress < 20){
+
+                    
+                    if (direction=="UP") {
+                        this.position[0] = this.position[0] - speed;
+                    }
+                
+
+                    if (direction=="DOWN") {
+                        
+                        this.position[0] = this.position[0] + speed;
+                    }
+
+                    if (direction=="LEFT") {
+                        this.position[1] = this.position[1] - speed;
+                    }
+
+                    if (direction=="RIGHT") {
+                        this.position[1] = this.position[1] + speed;
+                    }
+
+                    this.moveProgress = this.moveProgress + speed;
+
+                } 
 
 
+                if (this.moveProgress >= 20) {
+                    this.moveProgress = 0; 
+                    if (nextDirection != null && !Check_wall_at_new_direction(board) /*AND den_direction_han_skal_pege_Ingen_Mur(Board)  */) {
+                        this.direction = nextDirection;
+                        nextDirection = null;
+            
+            }
+
+
+
+        }
         
 
-            if(this.moveProgress < 20){
 
-                
-                if (direction=="UP") {
-                    this.position[0] = position[0] - speed;
-                }
-            
 
-                if (direction=="DOWN") {
-                    
-                    this.position[0] = position[0] + speed;
-                }
 
-                if (direction=="LEFT") {
-                    this.position[1] = position[1] - speed;
-                }
 
-                if (direction=="RIGHT") {
-                    this.position[1] = position[1] + speed;
-                }
 
-                this.moveProgress = moveProgress + speed;
-
-            } else {
-                moveProgress = 0; 
-                if (nextDirection != null) {
-                    this.direction = nextDirection;
-                    nextDirection = null;
-                
-                
-                }
             }
-            
+
+
          
 
 
         } 
+
+
+        private boolean Check_wall_at_new_direction(Board board){
+
+            //nextDirection
+
+            int new_x = this.position[1];
+            int new_y = this.position[0];
+
+            String nextDirection = this.nextDirection;
+
+            if (nextDirection.equals("UP")) {
+                new_y = this.position[0] - this.speed;
+            }
+           
+            if (nextDirection.equals("DOWN")) {
+                new_y = this.position[0] + this.speed + (20 - 1);
+            }
+    
+            if (nextDirection.equals("LEFT")) {
+                new_x = this.position[1] - this.speed;
+            }
+    
+            if (nextDirection.equals("RIGHT")) {
+                new_x = this.position[1] + this.speed + (20 - 1);
+            }
+
+
+            int position_in_matrix_x = (new_x  / 20);
+            int position_in_matrix_y = (new_y  / 20);
+
+            if (position_in_matrix_y < 0 || position_in_matrix_x < 0 || position_in_matrix_y >= board.getBoard().length || position_in_matrix_x >= board.getBoard()[0].length) {
+                return true; // out-of-bounds treated as wall
+            }
+    
+            return board.getBoard()[position_in_matrix_y][position_in_matrix_x] == 'w';
+        }
 
      
 
@@ -99,6 +149,10 @@ public class Pacman implements MovingObject {
 
     public String getDirection(){
         return this.direction;
+    }
+
+    public int getMoveProgress(){
+        return this.moveProgress;
     }
 
     

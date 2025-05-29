@@ -3,7 +3,7 @@ package com.example;
 public class Collision {
 
 
-    public static boolean wall_collision(Pacman pacman,Board board, int tile_size){
+    public static boolean wall_collision(MovingObject pacman,Board board, int tile_size){
 
         //calculate which value to get.
 

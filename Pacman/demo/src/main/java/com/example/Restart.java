@@ -6,9 +6,14 @@ public class Restart {
         board.restart();
     }
 
-    public static void resetGamestate(GameState gamestate){
-        gamestate.setLife(2);
-        gamestate.setScore(0);
+    public static void resetGamestate(GameState gamestate, boolean resetall){
+
+        if (resetall){
+            gamestate.setLife(2);
+            gamestate.setScore(0);
+
+        }
+        
         gamestate.setGameState(0);
 
     }

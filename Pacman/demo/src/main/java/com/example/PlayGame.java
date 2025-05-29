@@ -112,12 +112,24 @@ public class PlayGame extends Application {
                         RenderMenu.render(gc ,gamestate, scoreLabel, LifeLabel);
 
                         
-                    } else{ // Restarts game
+                    } else if (gamestate.getGameState() == 4) { // Restarts game
                        
                        
                         Restart.resetPosition(pacman, redghost, blueghost, pinkghost, orangeghost, tile_size);
                         Restart.resetBoard(board);
-                        Restart.resetGamestate(gamestate);
+                        Restart.resetGamestate(gamestate, true);
+
+                        LifeLabel.setLayoutX(500);
+                        LifeLabel.setLayoutY(10);
+
+                        scoreLabel.setLayoutX(10);
+                        scoreLabel.setLayoutY(10);
+
+                    } else {
+
+                        Restart.resetPosition(pacman, redghost, blueghost, pinkghost, orangeghost, tile_size);
+                        Restart.resetBoard(board);
+                        Restart.resetGamestate(gamestate, false);
 
                         LifeLabel.setLayoutX(500);
                         LifeLabel.setLayoutY(10);

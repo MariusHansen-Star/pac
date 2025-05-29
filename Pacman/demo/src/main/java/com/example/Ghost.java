@@ -23,7 +23,7 @@ public class Ghost implements MovingObject {
 
     
 
-    public void move() {
+    public void move(Board board) {
 
         if(this.moveProgress < 20){
 
@@ -40,7 +40,7 @@ public class Ghost implements MovingObject {
                 this.position[1] = position[1] - speed;
             }
 
-            if (direction=="RIGHT") {
+            if (direction=="RIGHT") { 
                 this.position[1] = position[1] + speed;
             }
 

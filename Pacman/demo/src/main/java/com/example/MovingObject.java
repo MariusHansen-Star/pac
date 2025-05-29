@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 
 public interface  MovingObject {
 
-    public void move();
+    public void move(Board board);
 
     //setters
     public void setPosition(int[] position);

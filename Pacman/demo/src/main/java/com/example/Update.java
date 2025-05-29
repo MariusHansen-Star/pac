@@ -7,9 +7,11 @@ public class Update {
     public static void updateGame(Board board, Pacman pacman, int tile_size, GameState gamestate, Ghost redghost, Ghost blueghost, Ghost pinkghost, Ghost orangeghost){
 
         // Pac movement
-        if (!Collision.wall_collision(pacman, board, tile_size)) {
-            pacman.move();
-            }
+    
+
+        pacman.move(board);
+
+            
 
 
         //ghost movement
@@ -28,7 +30,7 @@ public class Update {
 
                  //Win condition
             if (WinCondition.check(board)){
-            gamestate.setGameState(3);
+            gamestate.setGameState(5);
 
         }
 
@@ -44,7 +46,7 @@ public class Update {
 
                  //Win condition
             if (WinCondition.check(board)){
-            gamestate.setGameState(3);
+            gamestate.setGameState(5);
 
         }
 

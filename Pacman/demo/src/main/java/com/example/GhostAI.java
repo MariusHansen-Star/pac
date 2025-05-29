@@ -16,7 +16,7 @@ public class GhostAI {
 
 
         if(!Collision.wall_collision(ghost, board, tile_size)){
-            ghost.move();
+            ghost.move(board);
         } else{
             ghost.setDirection(randomDirection);
         }
