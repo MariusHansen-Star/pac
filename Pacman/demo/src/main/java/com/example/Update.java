@@ -13,10 +13,10 @@ public class Update {
 
 
         //ghost movement
-        GhostAI.chase(redghost, pacman, board, tile_size);
-        GhostAI.chase(blueghost, pacman, board, tile_size);
-        GhostAI.chase(pinkghost, pacman, board, tile_size);
-        GhostAI.chase(orangeghost, pacman, board, tile_size);  
+        GhostAI.chase(redghost, board, tile_size);
+        GhostAI.chase(blueghost, board, tile_size);
+        GhostAI.chase(pinkghost, board, tile_size);
+        GhostAI.chase(orangeghost, board, tile_size);  
         
 
         //Checks collisions

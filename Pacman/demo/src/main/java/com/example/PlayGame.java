@@ -31,17 +31,17 @@ public class PlayGame extends Application {
         int start_speed = 2;
 
         //pacman pos: y = 6, x = 7
-        Pacman pacman =  new Pacman(start_speed,new ImageView("pac.png"),new int[]{tile_size * 6, tile_size * 6}, "RIGHT"
+        Pacman pacman =  new Pacman(start_speed,new ImageView("pac.png"),new int[]{tile_size * 14, tile_size * 9}, "RIGHT"
         , null, 0);
         Board board = new Board();
         GameState gamestate = new GameState(2, 0, 0);
-        Ghost redghost = new Ghost (start_speed,new ImageView("redghost.png"),new int[]{tile_size * 1, tile_size * 3}, "RIGHT"
+        Ghost redghost = new Ghost (start_speed,new ImageView("redghost.png"),new int[]{tile_size * 15, tile_size * 13}, "RIGHT"
         , null, 0);
-        Ghost blueghost = new Ghost (start_speed,new ImageView("blueghost.png"),new int[]{tile_size * 1, tile_size * 3}, "RIGHT"
+        Ghost blueghost = new Ghost (start_speed,new ImageView("blueghost.png"),new int[]{tile_size * 14, tile_size * 13}, "RIGHT"
         , null, 0);
-        Ghost pinkghost = new Ghost (start_speed,new ImageView("pinkghost.png"),new int[]{tile_size * 1, tile_size * 3}, "RIGHT"
+        Ghost pinkghost = new Ghost (start_speed,new ImageView("pinkghost.png"),new int[]{tile_size * 14, tile_size * 14}, "RIGHT"
         , null, 0);
-        Ghost orangeghost = new Ghost (start_speed,new ImageView("orangeghost.png"),new int[]{tile_size * 1, tile_size * 3}, "RIGHT"
+        Ghost orangeghost = new Ghost (start_speed,new ImageView("orangeghost.png"),new int[]{tile_size * 15, tile_size * 14}, "RIGHT"
         , null, 0);
 
         Wall wall = new Wall (new Image("wall.png"));
@@ -158,6 +158,5 @@ public class PlayGame extends Application {
     public static void main(String[] args) {
         launch();
     }
-    
-}// 2 .. 20 ..2 4 6. 7.8.9. ..11, 13 15, 17 19 21. 
- // 
+     
+}
