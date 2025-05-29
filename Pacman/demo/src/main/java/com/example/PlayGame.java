@@ -127,7 +127,6 @@ public class PlayGame extends Application {
 
                     } else {
 
-                        Restart.resetPosition(pacman, redghost, blueghost, pinkghost, orangeghost, tile_size);
                         Restart.resetBoard(board);
                         Restart.resetGamestate(gamestate, false);
 

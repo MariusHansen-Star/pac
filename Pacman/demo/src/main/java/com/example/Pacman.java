@@ -11,7 +11,7 @@ public class Pacman implements MovingObject {
     private int moveProgress;
     private String nextDirection; 
 
-    //Image image = new Image("pac.png");
+
 
     public Pacman(int speed, ImageView image, int[] position, String direction, String nextDirection, int moveProgress) {
         this.speed=speed;
@@ -82,7 +82,6 @@ public class Pacman implements MovingObject {
 
         private boolean Check_wall_at_new_direction(Board board){
 
-            //nextDirection
 
             int new_x = this.position[1];
             int new_y = this.position[0];

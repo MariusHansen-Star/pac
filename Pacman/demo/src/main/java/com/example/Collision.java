@@ -5,7 +5,7 @@ public class Collision {
 
     public static boolean wall_collision(MovingObject pacman,Board board, int tile_size){
 
-        //calculate which value to get.
+        
 
         int new_x = pacman.getPosition()[1];
         int new_y = pacman.getPosition()[0];
@@ -40,8 +40,6 @@ public class Collision {
 
 
     public static boolean wall_collision(Ghost pacman,Board board, int tile_size){
-
-        //calculate which value to get.
 
         int new_x = pacman.getPosition()[1];
         int new_y = pacman.getPosition()[0];

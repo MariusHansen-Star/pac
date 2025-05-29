@@ -49,10 +49,10 @@ public class Controller {
 
     public static void checkClick(KeyEvent event, GameState gamestate){
 
-        if(event.getCode() == KeyCode.SPACE){
-            gamestate.setGameState(4);
-
-
+        if(gamestate.getGameState() == 3){
+            if(event.getCode() == KeyCode.SPACE){
+                gamestate.setGameState(4);
+            }
         }
 
     }
