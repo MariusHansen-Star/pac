@@ -17,8 +17,6 @@ public interface  MovingObject {
     public ImageView getImage();
     public String  getDirection();
     public int[] getPosition();
+    public String getNextDirection();
 
-    
-
-    
 }

@@ -126,5 +126,44 @@ public class Collision {
     
     }
 
+
+
+    public static boolean Check_wall_at_new_direction(MovingObject pacman,Board board){
+
+
+        int new_x = pacman.getPosition()[1];
+        int new_y = pacman.getPosition()[0];
+
+        String nextDirection = pacman.getNextDirection();
+
+        if (nextDirection.equals("UP")) {
+            new_y = pacman.getPosition()[0] - pacman.getSpeed();
+        }
+       
+        if (nextDirection.equals("DOWN")) {
+            new_y = pacman.getPosition()[0] + pacman.getSpeed() + (20 - 1);
+        }
+
+        if (nextDirection.equals("LEFT")) {
+            new_x = pacman.getPosition()[1] - pacman.getSpeed();
+        }
+
+        if (nextDirection.equals("RIGHT")) {
+            new_x = pacman.getPosition()[1] + pacman.getSpeed() + (20 - 1);
+        }
+
+
+        int position_in_matrix_x = (new_x  / 20);
+        int position_in_matrix_y = (new_y  / 20);
+
+        if (position_in_matrix_y < 0 || position_in_matrix_x < 0 || position_in_matrix_y >= board.getBoard().length || position_in_matrix_x >= board.getBoard()[0].length) {
+            return true; // out-of-bounds treated as wall
+        }
+
+        return board.getBoard()[position_in_matrix_y][position_in_matrix_x] == 'w';
+    }
+
+
+
     
 }

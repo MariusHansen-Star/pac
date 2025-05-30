@@ -48,7 +48,7 @@ public class Ghost implements MovingObject {
 
         } else {
             moveProgress = 0; 
-            if (nextDirection != null) {
+            if (nextDirection != null && !Collision.Check_wall_at_new_direction(this ,board)  ) {
                 this.direction = nextDirection;
                 nextDirection = null;
             }
@@ -107,5 +107,11 @@ public class Ghost implements MovingObject {
         return this.direction;
 
     }
+
+    public String getNextDirection(){
+        return this.nextDirection;
+
+    }
+
 
 }

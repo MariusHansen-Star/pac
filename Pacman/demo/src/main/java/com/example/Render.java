@@ -87,20 +87,20 @@ public class Render {
 
         String direction = mObject.getDirection();
 
-        if (direction=="UP") {
+        if (direction.equals("UP")) {
             mObject.getImage().setRotate(270);
         }
     
 
-        if (direction=="DOWN") {
+        if (direction.equals("DOWN")) {
             mObject.getImage().setRotate(90);
         }
 
-        if (direction=="LEFT") {
+        if (direction.equals("LEFT")) {
             mObject.getImage().setRotate(180);
         }
 
-        if (direction=="RIGHT") {
+        if (direction.equals("RIGHT")) {
             mObject.getImage().setRotate(0);
         }
     }

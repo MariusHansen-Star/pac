@@ -30,7 +30,6 @@ public class PlayGame extends Application {
         int tile_size = 20;
         int start_speed = 2;
 
-        //pacman pos: y = 6, x = 7
         Pacman pacman =  new Pacman(start_speed,new ImageView("pac.png"),new int[]{tile_size * 14, tile_size * 9}, "RIGHT"
         , null, 0);
         Board board = new Board();
@@ -47,9 +46,6 @@ public class PlayGame extends Application {
         Wall wall = new Wall (new Image("wall.png"));
         BigFood bigFood = new BigFood(new Image("bigfood.jpg"));
         NormalFood normalFood = new NormalFood(new Image("normalfood.png"));
-
-
-
 
 
 
@@ -94,9 +90,7 @@ public class PlayGame extends Application {
             @Override
             public void handle(long now) {
 
-                //only check collision at move boundatres (move progress = 0)???
-
-                    if(gamestate.getGameState() == 0 || gamestate.getGameState() == 1){
+                    if(gamestate.getGameState() == 0 || gamestate.getGameState() == 1){ // gamestate 0 = normalstate, gamestate 1 = power state    
                         Update.updateGame(board, pacman, tile_size, gamestate, redghost, blueghost, pinkghost, orangeghost);
 
                         RenderScore.render(gamestate, scoreLabel, LifeLabel);
@@ -107,12 +101,12 @@ public class PlayGame extends Application {
                         Render.render_moving_object(pinkghost, tile_size);
                         Render.render_moving_object(orangeghost, tile_size);
                        
-                    } else if(gamestate.getGameState() == 3) {
+                    } else if(gamestate.getGameState() == 3) { //gamestate 3 = endState
 
                         RenderMenu.render(gc ,gamestate, scoreLabel, LifeLabel);
 
                         
-                    } else if (gamestate.getGameState() == 4) { // Restarts game
+                    } else if (gamestate.getGameState() == 4) {// gamestate 4 = RestartState
                        
                        
                         Restart.resetPosition(pacman, redghost, blueghost, pinkghost, orangeghost, tile_size);
@@ -125,7 +119,7 @@ public class PlayGame extends Application {
                         scoreLabel.setLayoutX(10);
                         scoreLabel.setLayoutY(10);
 
-                    } else {
+                    } else {  //gamestate 5 = RestartState
 
                         Restart.resetBoard(board);
                         Restart.resetGamestate(gamestate, false);
@@ -160,9 +154,6 @@ public class PlayGame extends Application {
             }
         });
         
-
-
-
 }
 
 

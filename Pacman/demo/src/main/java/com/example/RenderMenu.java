@@ -24,6 +24,8 @@ public class RenderMenu {
         score.setLayoutX(canvasWidth / 2 -50);
         score.setLayoutY(canvasHeight / 2 + 10); 
 
+        score.setText("Score: " + gamestate.getScore() + "\n\nPress Space to Restart");
+
 
         life.setLayoutX(canvasWidth / 2- 50);
         life.setLayoutY(canvasHeight / 2 - 30);
