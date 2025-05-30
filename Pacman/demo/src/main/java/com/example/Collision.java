@@ -80,7 +80,8 @@ public class Collision {
             }
             else{ 
                 gamestate.setLife(gamestate.getLife() - 1);
-                pacman.setPosition(new int[] {tile_size * 6, tile_size * 6});
+                pacman.setPosition(new int[] {tile_size * 14, tile_size * 9});
+                pacman.setDirection("RIGHT");
             }
 
 
