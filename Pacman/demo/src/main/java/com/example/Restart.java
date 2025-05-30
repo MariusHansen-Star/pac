@@ -6,16 +6,14 @@ public class Restart {
         board.restart();
     }
 
-    public static void resetGamestate(GameState gamestate, boolean resetall){
+    public static void resetGamestate(GameState gamestate, boolean resetall, Ghost redghost, Ghost blueghost, Ghost pinkghost, Ghost orangeghost){
 
         if (resetall){
             gamestate.setLife(2);
             gamestate.setScore(0);
 
         }
-        
-        gamestate.setGameState(0);
-
+        UpdateGameState.ToNormalState(gamestate, redghost, blueghost, pinkghost, orangeghost);
     }
 
 

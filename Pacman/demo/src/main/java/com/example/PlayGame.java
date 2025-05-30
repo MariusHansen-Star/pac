@@ -111,7 +111,7 @@ public class PlayGame extends Application {
                        
                         Restart.resetPosition(pacman, redghost, blueghost, pinkghost, orangeghost, tile_size);
                         Restart.resetBoard(board);
-                        Restart.resetGamestate(gamestate, true);
+                        Restart.resetGamestate(gamestate, true, redghost, blueghost, pinkghost, orangeghost);
 
                         LifeLabel.setLayoutX(500);
                         LifeLabel.setLayoutY(10);
@@ -122,7 +122,7 @@ public class PlayGame extends Application {
                     } else {  //gamestate 5 = RestartState
 
                         Restart.resetBoard(board);
-                        Restart.resetGamestate(gamestate, false);
+                        Restart.resetGamestate(gamestate, false, redghost, blueghost, pinkghost, orangeghost);
 
                         LifeLabel.setLayoutX(500);
                         LifeLabel.setLayoutY(10);
