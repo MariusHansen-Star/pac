@@ -13,13 +13,14 @@ public class Restart {
             gamestate.setScore(0);
 
         }
+        
         UpdateGameState.ToNormalState(gamestate, redghost, blueghost, pinkghost, orangeghost);
     }
 
 
     public static void  resetPosition(MovingObject pacman, MovingObject redghost, MovingObject blueghost, MovingObject pinkghost, MovingObject orangeghost, int tile_size){
 
-        pacman.setPosition(new int[]{tile_size * 6, tile_size * 6});
+        pacman.setPosition(new int[]{tile_size * 14, tile_size * 9});
 
         redghost.setPosition(new int[]{tile_size * 15, tile_size * 13});
         blueghost.setPosition(new int[]{tile_size * 14, tile_size * 13}); 

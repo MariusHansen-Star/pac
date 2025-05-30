@@ -41,10 +41,13 @@ public class UpdateGameState {
         orangeghost.getImage().setImage(new Image ("orangeghost.png"));
 
 
-        redghost.setSpeed(redghost.getSpeed() * 2);
-        blueghost.setSpeed(blueghost.getSpeed() * 2);
-        pinkghost.setSpeed(pinkghost.getSpeed() * 2);
-        orangeghost.setSpeed(orangeghost.getSpeed() * 2);
+        if (redghost.getSpeed() == 1 ){
+            redghost.setSpeed(redghost.getSpeed() * 2);
+            blueghost.setSpeed(blueghost.getSpeed() * 2);
+            pinkghost.setSpeed(pinkghost.getSpeed() * 2);
+            orangeghost.setSpeed(orangeghost.getSpeed() * 2);
+
+        }
 
     }
 

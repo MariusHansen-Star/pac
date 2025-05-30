@@ -39,44 +39,6 @@ public class Collision {
     }
 
 
-    public static boolean wall_collision(Ghost pacman,Board board, int tile_size){
-
-        int new_x = pacman.getPosition()[1];
-        int new_y = pacman.getPosition()[0];
-
-        if (pacman.getDirection().equals("UP")) {
-            new_y = pacman.getPosition()[0] - pacman.getSpeed();
-        }
-       
-        if (pacman.getDirection().equals("DOWN")) {
-            new_y = pacman.getPosition()[0] + pacman.getSpeed() + (tile_size - 1);
-        }
-
-        if (pacman.getDirection().equals("LEFT")) {
-            new_x = pacman.getPosition()[1] - pacman.getSpeed();
-        }
-
-        if (pacman.getDirection().equals("RIGHT")) {
-            new_x = pacman.getPosition()[1] + pacman.getSpeed() + (tile_size - 1);
-        }
-
-
-        int position_in_matrix_x = (new_x  / tile_size);
-        int position_in_matrix_y = (new_y  / tile_size);
-
-        if (position_in_matrix_y < 0 || position_in_matrix_x < 0 || position_in_matrix_y >= board.getBoard().length || position_in_matrix_x >= board.getBoard()[0].length) {
-            return true; // out-of-bounds treated as wall
-        }
-
-        return board.getBoard()[position_in_matrix_y][position_in_matrix_x] == 'w';
-
-    }
-
-
-
-
-
-
     public static boolean sfood_collision(Pacman pacman,Board board, int tile_size, GameState gamestate){
 
         int new_x = pacman.getPosition()[1] / tile_size; // x
@@ -113,7 +75,7 @@ public class Collision {
 
             if (gamestate.getGameState() == 1){
                 gamestate.setScore(gamestate.getScore() + 50);
-                ghost.setPosition(new int[] {15*tile_size,15*tile_size});
+                ghost.setPosition(new int[] {15*tile_size,14*tile_size});
 
             }
             else{ 
